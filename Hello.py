@@ -23,6 +23,9 @@ import re
 # _BARD_API_KEY = "bQg9X_g2XOKyrXaHAbBSxsx9RbgN9VYI4ydpxAsWsJngx-NwcjIaJny2ZYz6kZpwOq8BBQ."
 
 os.environ['_BARD_API_KEY'] = "bQg9X_g2XOKyrXaHAbBSxsx9RbgN9VYI4ydpxAsWsJngx-NwcjIaJny2ZYz6kZpwOq8BBQ."
+token = os.environ['_BARD_API_KEY']
+
+
 subject_options = {
     "1": ["All", "English", "Mathematics", "EVS", "Hindi", "Art Education", "Computer Education - IT"],
     "2": ["All", "English", "Mathematics", "EVS", "Hindi", "Art Education", "Computer Education - IT"],
@@ -42,7 +45,9 @@ sensitive_content_regex = re.compile(r"[\(\[](sex|porn|nude|naked|violence|drugs
 
 @st.cache_data
 def response_api(prompt):
-    message = Bard().get_answer(prompt)['content']
+    # Create Bard instance
+    bard = Bard(token=token)
+    message = bard.get_answer(prompt)['content']
     # Filter out sensitive content
     message = sensitive_content_regex.sub('', message)
     return message
