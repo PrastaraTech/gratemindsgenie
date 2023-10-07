@@ -14,13 +14,15 @@
 from bardapi import Bard
 import streamlit as st
 from streamlit_chat import message
+from dotenv import load_dotenv
+load_dotenv()
 
 import os
 import re
 
+# _BARD_API_KEY = "bQg9X_g2XOKyrXaHAbBSxsx9RbgN9VYI4ydpxAsWsJngx-NwcjIaJny2ZYz6kZpwOq8BBQ."
 
 os.environ['_BARD_API_KEY'] = "bQg9X_g2XOKyrXaHAbBSxsx9RbgN9VYI4ydpxAsWsJngx-NwcjIaJny2ZYz6kZpwOq8BBQ."
-
 subject_options = {
     "1": ["All", "English", "Mathematics", "EVS", "Hindi", "Art Education", "Computer Education - IT"],
     "2": ["All", "English", "Mathematics", "EVS", "Hindi", "Art Education", "Computer Education - IT"],

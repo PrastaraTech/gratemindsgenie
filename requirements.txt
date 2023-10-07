@@ -5,3 +5,4 @@ pydeck
 streamlit
 bardapi
 streamlit_chat
+python-dotenv
