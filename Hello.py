@@ -22,8 +22,9 @@ import re
 
 # _BARD_API_KEY = "bQg9X_g2XOKyrXaHAbBSxsx9RbgN9VYI4ydpxAsWsJngx-NwcjIaJny2ZYz6kZpwOq8BBQ."
 
-os.environ['_BARD_API_KEY'] = "bQg9X_g2XOKyrXaHAbBSxsx9RbgN9VYI4ydpxAsWsJngx-NwcjIaJny2ZYz6kZpwOq8BBQ."
-token = os.environ['_BARD_API_KEY']
+token = "bQg9X_g2XOKyrXaHAbBSxsx9RbgN9VYI4ydpxAsWsJngx-NwcjIaJny2ZYz6kZpwOq8BBQ."
+#os.environ['_BARD_API_KEY'] = token
+
 
 
 subject_options = {
