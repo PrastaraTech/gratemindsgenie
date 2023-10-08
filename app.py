@@ -1,12 +1,32 @@
-from bardapi import Bard
+# Copyright (c) Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#     http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+import google.generativeai as palm
 import streamlit as st
 from streamlit_chat import message
 
-import os
 import re
 
+st.set_page_config(
+        page_title="GrateMinds - Genie",
+        page_icon="👋",
+        menu_items={
+                'Get Help': 'https://prastaratech.com',
+                'Report a bug': 'mailto:support@prastaratech.com',
+                'About': "# Genie. This is an *extremely* cool app!"
+                    }
+)
 
-os.environ['_BARD_API_KEY'] = "bQg9X_g2XOKyrXaHAbBSxsx9RbgN9VYI4ydpxAsWsJngx-NwcjIaJny2ZYz6kZpwOq8BBQ."
 
 subject_options = {
     "1": ["All", "English", "Mathematics", "EVS", "Hindi", "Art Education", "Computer Education - IT"],
@@ -25,9 +45,16 @@ subject_options = {
 
 sensitive_content_regex = re.compile(r"[\(\[](sex|porn|nude|naked|violence|drugs|alcohol)[\)\]]")
 
+
+
+palm.configure(api_key='AIzaSyARaOJ146arb0tNd6rdGKYJbuDUCW8kU0M')
+
+models = [m for m in palm.list_models() if 'generateText' in m.supported_generation_methods]
+model = models[0].name
+
 @st.cache_data
 def response_api(prompt):
-    message = Bard().get_answer(prompt)['content']
+    message = "" #Bard().get_answer(prompt)['content']
     # Filter out sensitive content
     message = sensitive_content_regex.sub('', message)
     return message
@@ -45,76 +72,34 @@ if user_grade:
 
     if user_subject:
         user_text = st.text_input("What are looking for now: ")
-        if user_text:
+        if st.button("Ask Genie..."):
             if 'generate' not in st.session_state:
                 st.session_state['generate'] = []
             if 'past' not in st.session_state:
                 st.session_state['past'] = []
             
-            output = response_api(f"Restrict responses only to NCERT textbooks and materials. Refer Grade {user_grade} subject {user_subject} and give answer to {user_text}")
-            st.session_state.generate.append(output)
-            st.session_state.past.append(user_text)
+            # output = response_api(f"Restrict responses only to NCERT textbooks and materials. Refer Grade {user_grade} subject {user_subject} and give answer to {user_text}")
+           
+            prompt = f"Restrict responses only to NCERT textbooks and materials. Refer Grade {user_grade} subject {user_subject} and give answer to {user_text}"
+          
+            with st.spinner('Wait for it...'):
+                completion = palm.generate_text(
+                model=model,
+                prompt=prompt,
+                temperature=0,
+                # The maximum length of the response
+                max_output_tokens=800,
+            )
+            
+                output = completion.result
+                print(completion)
+                st.session_state.generate.append(output)
+                st.session_state.past.append(str(user_text))
 
-            if st.session_state['generate']:
-                for i in range(len(st.session_state['generate']) - 1, -1, -1):
-                    message(st.session_state['past'][i],
-                            is_user=True, key=str(i) + '_user')
-                    message(st.session_state['generate'][i], key=str(i))
+                if st.session_state['generate']:
+                    for i in range(len(st.session_state['generate']) - 1, -1, -1):
+                        message(st.session_state['past'][i],
+                                is_user=True, key=str(i) + '_user')
+                        message(st.session_state['generate'][i], key=str(i))
 
-
-
-
-#####################################
-
-# # Copyright (c) Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
-# #
-# # Licensed under the Apache License, Version 2.0 (the "License");
-# # you may not use this file except in compliance with the License.
-# # You may obtain a copy of the License at
-# #
-# #     http://www.apache.org/licenses/LICENSE-2.0
-# #
-# # Unless required by applicable law or agreed to in writing, software
-# # distributed under the License is distributed on an "AS IS" BASIS,
-# # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# # See the License for the specific language governing permissions and
-# # limitations under the License.
-
-# import streamlit as st
-# from streamlit.logger import get_logger
-
-# LOGGER = get_logger(__name__)
-
-
-# def run():
-#     st.set_page_config(
-#         page_title="Hello",
-#         page_icon="👋",
-#     )
-
-#     st.write("# Welcome to Streamlit! 👋")
-
-#     st.sidebar.success("Select a demo above.")
-
-#     st.markdown(
-#         """
-#         Streamlit is an open-source app framework built specifically for
-#         Machine Learning and Data Science projects.
-#         **👈 Select a demo from the sidebar** to see some examples
-#         of what Streamlit can do!
-#         ### Want to learn more?
-#         - Check out [streamlit.io](https://streamlit.io)
-#         - Jump into our [documentation](https://docs.streamlit.io)
-#         - Ask a question in our [community
-#           forums](https://discuss.streamlit.io)
-#         ### See more complex demos
-#         - Use a neural net to [analyze the Udacity Self-driving Car Image
-#           Dataset](https://github.com/streamlit/demo-self-driving)
-#         - Explore a [New York City rideshare dataset](https://github.com/streamlit/demo-uber-nyc-pickups)
-#     """
-#     )
-
-
-# if __name__ == "__main__":
-#     run()
 
