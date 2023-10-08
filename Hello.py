@@ -13,6 +13,7 @@
 # limitations under the License.
 from bardapi import Bard
 import os
+import extra_streamlit_components as stx
 import requests
 import streamlit as st
 from streamlit_chat import message
@@ -32,7 +33,8 @@ session.headers = {
         }
 # session.cookies.set("__Secure-1PSID", os.getenv("_BARD_API_KEY")) 
 session.cookies.set("__Secure-1PSID", token) 
-
+# session.cookies.set_cookie("__Secure-1PSID", token)
+session.cookies.get("__Secure-1PSID")
 bard = Bard(token=token, session=session, timeout=30)
 
 
@@ -66,7 +68,19 @@ subject_options = {
 sensitive_content_regex = re.compile(r"[\(\[](sex|porn|nude|naked|violence|drugs|alcohol)[\)\]]")
 
 
-@st.cache_data
+@st.cache_resource(experimental_allow_widgets=True)
+def get_manager():
+    return stx.CookieManager()
+
+cookie_manager = get_manager()
+
+# st.subheader("All Cookies:")
+# cookies = cookie_manager.get_all()
+# st.write(cookies)
+cookie_manager.set("__Secure-1PSID", token)
+# st.write("__________________#####################_________________")
+# st.write(cookies)
+
 def response_api(prompt):
     message = "" #Bard().get_answer(prompt)['content']
     # Filter out sensitive content
