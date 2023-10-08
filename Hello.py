@@ -20,6 +20,11 @@ import re
 st.set_page_config(
         page_title="GrateMinds - Genie",
         page_icon="👋",
+        menu_items={
+                'Get Help': 'https://prastaratech.com',
+                'Report a bug': 'mailto:support@prastaratech.com',
+                'About': "# Genie. This is an *extremely* cool app!"
+                    }
 )
 
 
@@ -67,7 +72,7 @@ if user_grade:
 
     if user_subject:
         user_text = st.text_input("What are looking for now: ")
-        if user_text:
+        if st.button("Ask Genie..."):
             if 'generate' not in st.session_state:
                 st.session_state['generate'] = []
             if 'past' not in st.session_state:
@@ -87,6 +92,7 @@ if user_grade:
             )
             
                 output = completion.result
+                print(completion)
                 st.session_state.generate.append(output)
                 st.session_state.past.append(str(user_text))
 
