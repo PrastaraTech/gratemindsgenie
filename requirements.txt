@@ -3,6 +3,5 @@ numpy
 pandas
 pydeck
 streamlit
-bardapi
+google.generativeai
 streamlit_chat
-python-dotenv

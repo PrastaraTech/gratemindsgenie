@@ -11,20 +11,16 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-from bardapi import Bard
+import google.generativeai as palm
 import streamlit as st
 from streamlit_chat import message
-from dotenv import load_dotenv
-load_dotenv()
 
-import os
 import re
 
-# _BARD_API_KEY = "bQg9X_g2XOKyrXaHAbBSxsx9RbgN9VYI4ydpxAsWsJngx-NwcjIaJny2ZYz6kZpwOq8BBQ."
-
-token = "bQg9X_g2XOKyrXaHAbBSxsx9RbgN9VYI4ydpxAsWsJngx-NwcjIaJny2ZYz6kZpwOq8BBQ."
-#os.environ['_BARD_API_KEY'] = token
-
+st.set_page_config(
+        page_title="Hello",
+        page_icon="👋",
+)
 
 
 subject_options = {
@@ -44,11 +40,16 @@ subject_options = {
 
 sensitive_content_regex = re.compile(r"[\(\[](sex|porn|nude|naked|violence|drugs|alcohol)[\)\]]")
 
+
+
+palm.configure(api_key='AIzaSyARaOJ146arb0tNd6rdGKYJbuDUCW8kU0M')
+
+models = [m for m in palm.list_models() if 'generateText' in m.supported_generation_methods]
+model = models[0].name
+
 @st.cache_data
 def response_api(prompt):
-    # Create Bard instance
-    bard = Bard(token=token)
-    message = bard.get_answer(prompt)['content']
+    message = "" #Bard().get_answer(prompt)['content']
     # Filter out sensitive content
     message = sensitive_content_regex.sub('', message)
     return message
@@ -72,9 +73,24 @@ if user_grade:
             if 'past' not in st.session_state:
                 st.session_state['past'] = []
             
-            output = response_api(f"Restrict responses only to NCERT textbooks and materials. Refer Grade {user_grade} subject {user_subject} and give answer to {user_text}")
+            # output = response_api(f"Restrict responses only to NCERT textbooks and materials. Refer Grade {user_grade} subject {user_subject} and give answer to {user_text}")
+           
+            prompt = f"Restrict responses only to NCERT textbooks and materials. Refer Grade {user_grade} subject {user_subject} and give answer to {user_text}"
+          
+            
+
+            completion = palm.generate_text(
+                model=model,
+                prompt=prompt,
+                temperature=0,
+                # The maximum length of the response
+                max_output_tokens=800,
+            )
+            # print(completion.result)
+            
+            output = completion.result
             st.session_state.generate.append(output)
-            st.session_state.past.append(user_text)
+            st.session_state.past.append(str(user_text))
 
             if st.session_state['generate']:
                 for i in range(len(st.session_state['generate']) - 1, -1, -1):
@@ -83,11 +99,3 @@ if user_grade:
                     message(st.session_state['generate'][i], key=str(i))
 
 
-# def run():
-#     st.set_page_config(
-#         page_title="Hello",
-#         page_icon="👋",
-#     )
-
-# if __name__ == "__main__":
-#     run()
