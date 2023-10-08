@@ -45,9 +45,9 @@ subject_options = {
 
 sensitive_content_regex = re.compile(r"[\(\[](sex|porn|nude|naked|violence|drugs|alcohol)[\)\]]")
 
+secret_value = st.secrets["my_api_key"]
 
-
-palm.configure(api_key='AIzaSyARaOJ146arb0tNd6rdGKYJbuDUCW8kU0M')
+palm.configure(api_key={secret_value})
 
 models = [m for m in palm.list_models() if 'generateText' in m.supported_generation_methods]
 model = models[0].name
