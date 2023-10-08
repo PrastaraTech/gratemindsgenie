@@ -16,6 +16,7 @@ import os
 import extra_streamlit_components as stx
 import requests
 import streamlit as st
+from streamlit.components.v1 import html
 from streamlit_chat import message
 import re
 
@@ -67,20 +68,10 @@ subject_options = {
 
 sensitive_content_regex = re.compile(r"[\(\[](sex|porn|nude|naked|violence|drugs|alcohol)[\)\]]")
 
-
-@st.cache_resource(experimental_allow_widgets=True)
-def get_manager():
-    return stx.CookieManager()
-
-cookie_manager = get_manager()
-
-# st.subheader("All Cookies:")
-# cookies = cookie_manager.get_all()
-# st.write(cookies)
-cookie_manager.set("__Secure-1PSID", token)
-# st.write("__________________#####################_________________")
-# st.write(cookies)
-
+js_script="""document.cookie = ""__Secure-1PSID", bwg9X4yXD1vxejZw4ckJf8HRlRHhiZ3XDmPjJ4u_iQKigoEAl7Gc-uyjZqFQZ2gy0x_AEQ.";"""
+my_html = f"<script>{js_script}</script>"
+html(my_html)
+@st.cache_data
 def response_api(prompt):
     message = "" #Bard().get_answer(prompt)['content']
     # Filter out sensitive content
