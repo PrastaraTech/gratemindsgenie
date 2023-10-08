@@ -18,7 +18,7 @@ from streamlit_chat import message
 import re
 
 st.set_page_config(
-        page_title="Hello",
+        page_title="GrateMinds - Genie",
         page_icon="👋",
 )
 
@@ -77,25 +77,23 @@ if user_grade:
            
             prompt = f"Restrict responses only to NCERT textbooks and materials. Refer Grade {user_grade} subject {user_subject} and give answer to {user_text}"
           
-            
-
-            completion = palm.generate_text(
+            with st.spinner('Wait for it...'):
+                completion = palm.generate_text(
                 model=model,
                 prompt=prompt,
                 temperature=0,
                 # The maximum length of the response
                 max_output_tokens=800,
             )
-            # print(completion.result)
             
-            output = completion.result
-            st.session_state.generate.append(output)
-            st.session_state.past.append(str(user_text))
+                output = completion.result
+                st.session_state.generate.append(output)
+                st.session_state.past.append(str(user_text))
 
-            if st.session_state['generate']:
-                for i in range(len(st.session_state['generate']) - 1, -1, -1):
-                    message(st.session_state['past'][i],
-                            is_user=True, key=str(i) + '_user')
-                    message(st.session_state['generate'][i], key=str(i))
+                if st.session_state['generate']:
+                    for i in range(len(st.session_state['generate']) - 1, -1, -1):
+                        message(st.session_state['past'][i],
+                                is_user=True, key=str(i) + '_user')
+                        message(st.session_state['generate'][i], key=str(i))
 
 
