@@ -1,4 +1,4 @@
-# Copyright (c) Prastara Technologies (2023)
+# Copyright (c) Streamlit Inc. (2018-2022) Snowflake Inc. (2022)
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -11,47 +11,25 @@
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
 # limitations under the License.
-from bardapi import Bard
-import os
-import extra_streamlit_components as stx
-import requests
+import google.generativeai as palm
 import streamlit as st
-from streamlit.components.v1 import html
 from streamlit_chat import message
-import re
 from bs4 import BeautifulSoup
+import requests
+import re
 
-
-# os.environ['_BARD_API_KEY'] = 'bwg9X4yXD1vxejZw4ckJf8HRlRHhiZ3XDmPjJ4u_iQKigoEAl7Gc-uyjZqFQZ2gy0x_AEQ.'
-token='bwhzGx0WBgF5pXxNqpkgyn6xwlvvTXtfos8XJNXp0dfWWOPKSNhi0VlliKrqW2BWkMaODw.'
+# secure = 'bwhzG2utun5t_QKbsEYF9SN37sGeuL-iLH66PyXpmuK_QMRlIvFILUhKacMk1gPrTzraUg.'
 
 form_data={'Email': 'gmgenie9@gmail.com', 'Passwd': '!h7^m#6*a@e'}
 post = "https://accounts.google.com/signin/challenge/sl/password"
 
 with requests.Session() as s:
-    soup = BeautifulSoup(s.get("https://mail.google.com").text)
+    soup = BeautifulSoup(s.get("https://mail.google.com").text,features="html5lib")
     for inp in soup.select("#gaia_loginform input[name]"):
         if inp["name"] not in form_data:
             form_data[inp["name"]] = inp["value"]
     s.post(post, form_data)
-    html = s.get("https://bard.google.com/chat").content
-
-
-session = requests.Session()
-session.headers = {
-            "Host": "bard.google.com",
-            "X-Same-Domain": "1",
-            "User-Agent": "Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.114 Safari/537.36",
-            "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
-            "Origin": "https://bard.google.com",
-            "Referer": "https://bard.google.com/",
-        }
-# session.cookies.set("__Secure-1PSID", os.getenv("_BARD_API_KEY")) 
-# session.cookies.set("__Secure-1PSID", token) 
-# session.cookies.set_cookie("__Secure-1PSID", token)
-# session.cookies.get("__Secure-1PSID")
-bard = Bard(token='bwhzGx0WBgF5pXxNqpkgyn6xwlvvTXtfos8XJNXp0dfWWOPKSNhi0VlliKrqW2BWkMaODw.')#, session=session, timeout=30)
-
+    html = s.get("https://bard.google.com").content
 
 
 st.set_page_config(
@@ -82,6 +60,12 @@ subject_options = {
 
 sensitive_content_regex = re.compile(r"[\(\[](sex|porn|nude|naked|violence|drugs|alcohol)[\)\]]")
 
+
+
+palm.configure(api_key='AIzaSyARaOJ146arb0tNd6rdGKYJbuDUCW8kU0M')
+
+models = [m for m in palm.list_models() if 'generateText' in m.supported_generation_methods]
+model = models[0].name
 
 @st.cache_data
 def response_api(prompt):
@@ -114,11 +98,17 @@ if user_grade:
             prompt = f"Restrict responses only to NCERT textbooks and materials. Refer Grade {user_grade} subject {user_subject} and give answer to {user_text}"
           
             with st.spinner('Wait for it...'):
-                # completion = bard.get_answer("Restrict responses only to NCERT textbooks and materials. Refer Grade 4 subject English and get List chapters")['content']
-                completion = bard.get_answer(str(prompt))['content']
-                
-                
-                st.session_state.generate.append(completion)
+                completion = palm.generate_text(
+                model=model,
+                prompt=prompt,
+                temperature=0,
+                # The maximum length of the response
+                max_output_tokens=800,
+            )
+            
+                output = completion.result
+                # print(completion)
+                st.session_state.generate.append(output)
                 st.session_state.past.append(str(user_text))
 
                 if st.session_state['generate']:
@@ -126,4 +116,5 @@ if user_grade:
                         message(st.session_state['past'][i],
                                 is_user=True, key=str(i) + '_user')
                         message(st.session_state['generate'][i], key=str(i))
-                        
+
+
