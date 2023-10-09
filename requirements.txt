@@ -7,5 +7,5 @@ bardapi
 google.generativeai
 streamlit_chat
 extra_streamlit_components
-beautifulSoup
+beautifulSoup4
 requests
