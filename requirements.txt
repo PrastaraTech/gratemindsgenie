@@ -9,3 +9,4 @@ streamlit_chat
 extra_streamlit_components
 beautifulSoup4
 requests
+html5lib
