@@ -57,37 +57,37 @@ if user_grade:
     user_subject = st.selectbox("Choose your subject",
                                 subject_options_for_grade, index=None)
 
-    if user_subject:
-        user_text = st.text_input("What are looking for now: ")
-        if st.button("Ask Genie..."):
-            if 'generate' not in st.session_state:
-                st.session_state['generate'] = []
-            if 'past' not in st.session_state:
-                st.session_state['past'] = []
-            
-            # output = response_api(f"Restrict responses only to NCERT textbooks and materials. Refer Grade {user_grade} subject {user_subject} and give answer to {user_text}")
-           
-            prompt = f"Restrict responses only to NCERT textbooks and materials. Refer Grade {user_grade} subject {user_subject} and give answer to {user_text}"
-          
-            
+    # if user_subject:
+    user_text = st.text_input("What are looking for now: ")
+    if st.button("Ask Genie..."):
+        if 'generate' not in st.session_state:
+            st.session_state['generate'] = []
+        if 'past' not in st.session_state:
+            st.session_state['past'] = []
+        
+        # output = response_api(f"Restrict responses only to NCERT textbooks and materials. Refer Grade {user_grade} subject {user_subject} and give answer to {user_text}")
+        
+        prompt = f"Restrict responses only to NCERT textbooks and materials. Refer Grade {user_grade} subject {user_subject} and give answer to {user_text}"
+        
+        
 
-            completion = palm.generate_text(
-                model=model,
-                prompt=prompt,
-                temperature=0,
-                # The maximum length of the response
-                max_output_tokens=800,
-            )
-            # print(completion.result)
-            
-            output = completion.result
-            st.session_state.generate.append(output)
-            st.session_state.past.append(str(user_text))
+        completion = palm.generate_text(
+            model=model,
+            prompt=prompt,
+            temperature=0,
+            # The maximum length of the response
+            max_output_tokens=800,
+        )
+        # print(completion.result)
+        
+        output = completion.result
+        st.session_state.generate.append(output)
+        st.session_state.past.append(str(user_text))
 
-            if st.session_state['generate']:
-                for i in range(len(st.session_state['generate']) - 1, -1, -1):
-                    message(st.session_state['past'][i],
-                            is_user=True, key=str(i) + '_user')
-                    message(st.session_state['generate'][i], key=str(i))
+        if st.session_state['generate']:
+            for i in range(len(st.session_state['generate']) - 1, -1, -1):
+                message(st.session_state['past'][i],
+                        is_user=True, key=str(i) + '_user')
+                message(st.session_state['generate'][i], key=str(i))
 
 
