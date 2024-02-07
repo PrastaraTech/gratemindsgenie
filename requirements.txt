@@ -10,3 +10,4 @@ extra_streamlit_components
 beautifulSoup4
 requests
 html5lib
+python-dotenv
