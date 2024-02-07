@@ -1,4 +1,4 @@
-import google.generativeai as palm
+import google.generativeai as genai
 import streamlit as st
 from streamlit_chat import message
 
@@ -25,11 +25,8 @@ sensitive_content_regex = re.compile(
 
 api_key = st.secrets["my_api_key"]
 
-palm.configure(api_key=api_key)
-
-models = [m for m in palm.list_models(
-) if 'generateText' in m.supported_generation_methods]
-model = models[0].name
+model = genai.GenerativeModel(model_name="gemini-pro")
+chat = model.start_chat(history=[])
 
 st.set_page_config(
     page_title="GrateMinds - Genie",
@@ -73,18 +70,12 @@ if user_grade:
 
                 # output = response_api(f"Restrict responses only to NCERT textbooks and materials. Refer Grade {user_grade} subject {user_subject} and give answer to {user_text}")
 
-                prompt = f"Restrict responses only to NCERT textbooks and materials. Refer Grade {user_grade} subject {user_subject} and give answer to {user_text}"
+                prompt = f"Restrict responses only to NCERT textbooks and materials. Refer Grade {
+                    user_grade} subject {user_subject} and give answer to {user_text}"
 
-                completion = palm.generate_text(
-                    model=model,
-                    prompt=prompt,
-                    temperature=0,
-                    # The maximum length of the response
-                    max_output_tokens=800,
-                )
-                # print(completion.result)
+                response = model.generate_content(prompt)
+                output = response.text
 
-                output = completion.result
                 st.session_state.generate.append(output)
                 st.session_state.past.append(str(user_text))
 

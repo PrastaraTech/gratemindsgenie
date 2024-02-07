@@ -9,7 +9,6 @@ import requests
 
 load_dotenv()  # loading all the environment variables
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
-# genai.configure(api_key='AIzaSyBFRJ3Q40xCCdbBKbOSg1Uy3VB49eS8lZM')
 model = genai.GenerativeModel(model_name="gemini-pro")
 chat = model.start_chat(history=[])
 
