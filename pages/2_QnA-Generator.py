@@ -77,8 +77,8 @@ if user_grade:
                 if 'past' not in st.session_state:
                     st.session_state['past'] = []
 
-                prompt = f"Restrict responses only to NCERT textbooks and materials. Refer Grade {
-                    user_grade} subject {user_subject} and generate {questions} {test_type} type questions in the topics {user_text}"
+                prompt = f'Restrict responses only to NCERT textbooks and materials. Refer Grade {
+                    user_grade} subject {user_subject} and generate {questions} {test_type} type questions in the topics {user_text}'
 
                 if answers:
                     prompt = prompt + " also provide answers separatly."
