@@ -70,8 +70,8 @@ if user_grade:
 
                 # output = response_api(f"Restrict responses only to NCERT textbooks and materials. Refer Grade {user_grade} subject {user_subject} and give answer to {user_text}")
 
-                prompt = f'Restrict responses only to NCERT textbooks and materials. Refer Grade 
-                {user_grade} subject {user_subject} and give answer to {user_text}'
+                prompt = f"""Restrict responses only to NCERT textbooks and materials. Refer Grade {
+                    user_grade} subject {user_subject} and give answer to {user_text}"""
 
                 response = model.generate_content(prompt)
                 output = response.text
