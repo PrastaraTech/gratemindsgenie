@@ -61,7 +61,7 @@ if user_grade:
 
     if user_subject:
         test_type = st.radio("What type of test?", [
-                             ":rainbow[Questions]", "MCQ", "Fill in the blanks"], index=0,)
+                             ":rainbow[Questions]", "MCQ", "Fill in the blanks"], horizontal=True, index=0,)
         st.write("You selected:", test_type)
 
         questions = st.slider("Number of questions:",

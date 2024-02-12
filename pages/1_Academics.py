@@ -60,7 +60,7 @@ if user_grade:
                                 subject_options_for_grade, index=None)
 
     if user_subject:
-        user_text = st.text_area("What are looking for now?")
+        user_text = st.chat_input("Say something",)
         if user_text:
             if st.button("Ask Genie..."):
                 if 'generate' not in st.session_state:
