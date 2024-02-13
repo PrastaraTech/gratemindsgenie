@@ -6,8 +6,6 @@ import google.generativeai as genai
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 model = genai.GenerativeModel('gemini-pro')
 
-# Gemini uses 'model' for assistant; Streamlit uses 'assistant'
-
 
 def clear_chat_history():
     st.session_state.chat = model.start_chat(history=[])
@@ -24,8 +22,17 @@ def role_to_streamlit(role):
 if "chat" not in st.session_state:
     st.session_state.chat = model.start_chat(history=[])
 
+st.set_page_config(
+    page_title="GrateMinds - Genie",
+    page_icon="👋",
+    menu_items={
+        'Get Help': 'https://prastaratech.com',
+        'Report a bug': 'mailto:support@prastaratech.com',
+        'About': "# Genie. This is an *extremely* cool app!"
+    }
+)
 # Display Form Title
-st.title("Chat with Google Gemini-Pro!")
+st.title("Chat with GreatMinds Genie!")
 # Display chat messages from history above current input box
 for message in st.session_state.chat.history:
     with st.chat_message(role_to_streamlit(message.role)):

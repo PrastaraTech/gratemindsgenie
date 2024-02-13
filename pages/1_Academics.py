@@ -60,27 +60,27 @@ if user_grade:
                                 subject_options_for_grade, index=None)
 
     if user_subject:
-        user_text = st.chat_input("Say something",)
+        user_text = st.chat_input(
+            "Ask specific questions on subject you selected",)
         if user_text:
-            if st.button("Ask Genie..."):
-                if 'generate' not in st.session_state:
-                    st.session_state['generate'] = []
-                if 'past' not in st.session_state:
-                    st.session_state['past'] = []
+            if 'generate' not in st.session_state:
+                st.session_state['generate'] = []
+            if 'past' not in st.session_state:
+                st.session_state['past'] = []
 
-                # output = response_api(f"Restrict responses only to NCERT textbooks and materials. Refer Grade {user_grade} subject {user_subject} and give answer to {user_text}")
+            # output = response_api(f"Restrict responses only to NCERT textbooks and materials. Refer Grade {user_grade} subject {user_subject} and give answer to {user_text}")
 
-                prompt = f"""Restrict responses only to NCERT textbooks and materials. Refer Grade {
-                    user_grade} subject {user_subject} and give answer to {user_text}"""
+            prompt = f"""Restrict responses only to NCERT textbooks and materials. Refer class {
+                user_grade} subject {user_subject} and give answer to {user_text}"""
 
-                response = model.generate_content(prompt)
-                output = response.text
+            response = model.generate_content(prompt)
+            output = response.text
 
-                st.session_state.generate.append(output)
-                st.session_state.past.append(str(user_text))
+            st.session_state.generate.append(output)
+            st.session_state.past.append(str(user_text))
 
-                if st.session_state['generate']:
-                    for i in range(len(st.session_state['generate']) - 1, -1, -1):
-                        message(st.session_state['past'][i],
-                                is_user=True, key=str(i) + '_user')
-                        message(st.session_state['generate'][i], key=str(i))
+            if st.session_state['generate']:
+                for i in range(len(st.session_state['generate']) - 1, -1, -1):
+                    message(st.session_state['past'][i],
+                            is_user=True, key=str(i) + '_user')
+                    message(st.session_state['generate'][i], key=str(i))
