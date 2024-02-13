@@ -37,8 +37,9 @@ st.set_page_config(
         'About': "# Genie. This is an *extremely* cool app!"
     }
 )
+st.page_link("Hello.py", label="Home", icon="🏠")
 # st.title("Academics")
-st.markdown("# Academics")
+st.markdown("# Academics :100:")
 # st.sidebar.title("Academics")
 
 
@@ -60,7 +61,7 @@ if user_grade:
                                 subject_options_for_grade, index=None)
 
     if user_subject:
-        user_text = st.chat_input(
+        user_text = st.text_input(
             "Ask specific questions on subject you selected",)
         if user_text:
             if 'generate' not in st.session_state:
@@ -73,8 +74,9 @@ if user_grade:
             prompt = f"""Restrict responses only to NCERT textbooks and materials. Refer class {
                 user_grade} subject {user_subject} and give answer to {user_text}"""
 
-            response = model.generate_content(prompt)
-            output = response.text
+            with st.spinner():
+                response = model.generate_content(prompt)
+                output = response.text
 
             st.session_state.generate.append(output)
             st.session_state.past.append(str(user_text))

@@ -37,9 +37,8 @@ st.set_page_config(
         'About': "# Genie. This is an *extremely* cool app!"
     }
 )
-# st.title("Academics")
-st.markdown("# Academics")
-# st.sidebar.title("Academics")
+st.page_link("Hello.py", label="Home", icon="🏠")
+st.markdown("# QnA Generator from Academic Textbooks :question:")
 
 
 @st.cache_data

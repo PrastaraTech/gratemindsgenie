@@ -32,7 +32,8 @@ st.set_page_config(
     }
 )
 # Display Form Title
-st.title("Chat with GreatMinds Genie!")
+st.page_link("Hello.py", label="Home", icon="🏠")
+st.title(":infinity: Chat with GreatMinds Genie!")
 # Display chat messages from history above current input box
 for message in st.session_state.chat.history:
     with st.chat_message(role_to_streamlit(message.role)):
@@ -50,6 +51,4 @@ if prompt := st.chat_input("I possess a well of knowledge. What would you like t
     # Display last
     with st.chat_message("assistant"):
         st.markdown(response.text)
-
-
-st.button(':rainbow[Clear History]', on_click=clear_chat_history)
+        st.button(':rainbow[Clear History]', on_click=clear_chat_history)
