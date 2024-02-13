@@ -71,23 +71,23 @@ if user_grade:
 
         user_text = st.text_input("Topic: (provide unit/chapter/lession name)")
         if user_text:
-            if st.button("Ask Genie..."):
-                if 'generate' not in st.session_state:
-                    st.session_state['generate'] = []
-                if 'past' not in st.session_state:
-                    st.session_state['past'] = []
+            if 'generate' not in st.session_state:
+                st.session_state['generate'] = []
+            if 'past' not in st.session_state:
+                st.session_state['past'] = []
 
-                prompt = f"""Restrict responses only to NCERT textbooks and materials. Refer Grade {
-                    user_grade} subject {user_subject} and generate {questions} {test_type} type questions in the topics {user_text}"""
+            prompt = f"""Restrict responses only to NCERT textbooks and materials. Refer Grade {
+                user_grade} subject {user_subject} and generate {questions} {test_type} type questions in the topics {user_text}"""
 
-                if answers:
-                    prompt = prompt + " also provide answers separatly."
+            if answers:
+                prompt = prompt + " also provide answers separatly."
 
+            with st.spinner():
                 response = model.generate_content(prompt)
                 output = response.text
 
-                st.session_state.generate.append(output)
-                st.session_state.past.append(str(user_text))
+            st.session_state.generate.append(output)
+            st.session_state.past.append(str(user_text))
 
         if 'generate' in st.session_state:
             for i in range(len(st.session_state['generate']) - 1, -1, -1):
