@@ -4,38 +4,27 @@ import streamlit as st
 import os
 from streamlit_chat import message
 
-import re
-import requests
+import csv
+
+
+with open('NCERT.txt', 'r') as csvfile:
+    reader = csv.DictReader(csvfile)
+    data = []
+    for row in reader:
+        # Access data using column names
+        data.append(row)
+
+    # Get distinct values from Grade column
+    distinct_grades = set(row["Grade"] for row in data)
+    # Convert the set to a list
+    grades_list = sorted(list(distinct_grades))
+    print(grades_list)
 
 load_dotenv()  # loading all the environment variables
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 # genai.configure(api_key='AIzaSyBFRJ3Q40xCCdbBKbOSg1Uy3VB49eS8lZM')
 model = genai.GenerativeModel(model_name="gemini-pro")
 chat = model.start_chat(history=[])
-
-subject_options = {
-    "1": ["All", "English", "Mathematics", "EVS", "Hindi", "Art Education", "Computer Education - IT"],
-    "2": ["All", "English", "Mathematics", "EVS", "Hindi", "Art Education", "Computer Education - IT"],
-    "3": ["All", "English", "Mathematics", "EVS", "Hindi", "Art Education", "Computer Education - IT"],
-    "4": ["All", "English", "Mathematics", "EVS", "Hindi", "Art Education", "Computer Education - IT"],
-    "5": ["All", "English", "Mathematics", "EVS", "Hindi", "Art Education", "Computer Education - IT"],
-    "6": ["All", "English", "Mathematics", "Science", "Social Science", "Hindi", "Sanskrit", "Art Education", "Computer Science"],
-    "7": ["All", "English", "Mathematics", "Science", "Social Science", "Hindi", "Sanskrit", "Art Education", "Computer Science"],
-    "8": ["All", "English", "Mathematics", "Science", "Social Science", "Hindi", "Sanskrit", "Art Education", "Computer Science"],
-    "9": ["All", "English", "Mathematics", "Science", "Social Science", "Hindi", "Sanskrit", "Art Education", "Computer Science", "Health and Physical Education"],
-    "10": ["All", "English", "Mathematics", "Science", "Social Science", "Hindi", "Sanskrit", "Art Education", "Computer Science", "Health and Physical Education"],
-    "11": ['All', 'Sanskrit', 'Accountancy', 'Chemistry', 'Mathematics', 'Biology', 'Psychology', 'Geography', 'Physics', 'Hindi', 'Sociology', 'English', 'Political Science', 'History', 'Economics', 'Business Studies', 'Home Science', 'Creative Writing and Translation', 'Fine Art', 'Informatics Practices', 'Computer Science', 'Health and Physical Education', 'Biotechnology', 'Sangeet', 'Knowledge Traditions Practices of India'],
-    "12": ['All', 'Mathematics', 'Physics', 'Accountancy', 'Sanskrit', 'Hindi', 'English', 'Biology', 'History', 'Geography', 'Psychology', 'Sociology', 'Chemistry', 'Political Science', 'Economics', 'Business Studies', 'Home Science', 'Urdu', 'Creative Writing & Translation', 'Fine Art', 'Computer Science', 'Informatics Practices', 'Biotechnology']
-}
-
-sensitive_content_regex = re.compile(
-    r"[\(\[](sex|porn|nude|naked|violence|drugs|alcohol)[\)\]]")
-
-# api_key = st.secrets["my_api_key"]
-
-
-# bard = Bard(token='eAg9X33i8UNIZ-49BT6ibpWS6LTMlashugoRYOdOB8XTStsJBfWGdnVsClWiM8N7c2mA9w.',
-#             timeout=30)
 
 
 st.set_page_config(
@@ -62,28 +51,59 @@ def response_api(prompt):
 
 
 user_grade = st.selectbox("Select your grade:",
-                          subject_options.keys(), index=None)
+                          grades_list, index=None)
 
 if user_grade:
-    subject_options_for_grade = subject_options[user_grade]
+    grade_rows = []
+    for row in data:
+        if row["Grade"] == user_grade:
+            grade_rows.append(row)
+
+    # Get distinct values from Grade column
+    distinct_subjects = set(row["Subject"] for row in grade_rows)
+    # Convert the set to a list
+    subjects_list = sorted(list(distinct_subjects))
 
     user_subject = st.selectbox("Choose your subject",
-                                subject_options_for_grade, index=None)
+                                subjects_list, index=None)
 
-    input = st.text_input("Input: ", key="input")
-    submit = st.button("Ask the question")
+    if user_subject:
+        textbook_rows = []
+        for row in grade_rows:
+            if row["Grade"] == user_grade and row["Subject"] == user_subject:
+                textbook_rows.append(row)
 
-    prompt = f"Restrict responses only to NCERT textbooks and materials. Refer Class {
-        user_grade} subject {user_subject} and give answer to {input}"
+        # Get distinct values from Textbook column
+        distinct_textbooks = set(row["Textbook"] for row in textbook_rows)
+        # Convert the set to a list
+        textbook_list = sorted(list(distinct_textbooks))
 
-    if submit and input:
-        response = chat.send_message(prompt, stream=True)
-        st.session_state['chat_history'].append(("You", input))
-        st.subheader("The Response is")
-        for chunk in response:
-            st.write(chunk.text)
-            st.session_state['chat_history'].append(("Bot", chunk.text))
+        user_textbook = st.selectbox("Choose textbook name",
+                                     textbook_list, index=None)
 
-    st.subheader("The Chat History is")
-    for role, text in st.session_state['chat_history']:
-        st.write(f"{role}: {text}")
+        if user_textbook:
+            input = st.text_input("Input: ", key="input")
+            submit = st.button("Ask the question")
+
+            prompt = f"""
+            Don't give any responses which are unsafe for kids below 16 years.
+            Try to limit responses to NCERT or byjus.com textbooks and materials.
+            Provide: '{input}', by following below criteria
+            Class: {user_grade}
+            Subject: {user_subject}
+            Textbook name: {user_textbook}.
+            """
+
+            if submit and input:
+                prompt
+                response = chat.send_message(prompt, stream=True)
+                st.session_state['chat_history'].append(("You", input))
+                st.subheader("The Response is")
+                for chunk in response:
+                    st.write(chunk.text)
+                    st.session_state['chat_history'].append(
+                        ("Bot", chunk.text))
+
+            st.subheader("The Chat History is")
+            for role, text in st.session_state['chat_history']:
+                st.write(f"{role}: {text}")

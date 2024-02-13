@@ -1,0 +1,384 @@
+Grade,Subject,Textbook
+I,English,Marigold
+I,English,Raindrops
+I,Mathematics,Math-Magic
+I,Mathematics,Ganit Ka Jaadu
+I,Mathematics,Riyazi Ka Jadoo-I(Urdu)
+I,Hindi,Rimjhim
+I,Urdu,Ibtedai Urdu-I
+II,Mathematics,Math-Magic
+II,Mathematics,ganit ka Jadu
+II,Mathematics,Riyazi ka Jadu-II(Urdu)
+II,Hindi,Rimjhim
+II,English,Marigold
+II,English,Raindrops
+II,Urdu,Ibtedai Urdu-II
+III,Mathematics,Mathematics
+III,Mathematics,Ganit
+III,Mathematics,Riyazi Ka Jadoo-III(Urdu)
+III,Hindi,Rimjhim
+III,English,Marigold
+III,Environmental Studies,Looking Around
+III,Environmental Studies,Aas-Pass
+III,Environmental Studies,Aas-Pass(urdu)
+III,Urdu,Ibtedai Urdu
+IV,Mathematics,Math-Magic
+IV,Mathematics,Ganit Ka Jadu
+IV,Mathematics,Riyazi Ka Jadu(Urdu)
+IV,Hindi,Rimjhim
+IV,English,Marigold
+IV,Environmental Studies,Looking Around(EVS)
+IV,Environmental Studies,Aas Paas
+IV,Environmental Studies,Aas-Paas(Urdu)
+IV,Urdu,Ibtedai Urdu-IV
+V,Mathematics,Math-Magic
+V,Mathematics,Ganit
+V,Mathematics,Riyazi Ka Jadoo(Urdu)
+V,Hindi,Rimjhim
+V,English,Marigold
+V,Environmental Studies,Aas-Pass
+V,Environmental Studies,Looking Around
+V,Environmental Studies,Ass Pass(Urdu)
+V,Urdu,Ibtedai Urdu Class-V
+VI,Hindi,Vasant
+VI,Hindi,Durva
+VI,Hindi,Bal Ram Katha
+VI,English,Honeysuckle
+VI,English,A Pact With The Sun
+VI,Mathematics,Mathematics
+VI,Mathematics,Ganit
+VI,Mathematics,Hisab(Urdu)
+VI,Social Studies,History - Our Past
+VI,Social Studies,The Earth Our Habitat
+VI,Social Studies,Hamare Ateet
+VI,Social Studies,Social And Political Life
+VI,Social Studies,Samajik Evem Rajnitik Jeevan
+VI,Social Studies,Prithavi Hamara Avas (Bhugol)
+VI,Social Studies,Hamare Maazi(Urdu)
+VI,Social Studies,Zameen Hamara Maskan(Urdu)
+VI,Social Studies,Samazi Aur Siyasi Zindagi(Urdu)
+VI,Sanskrit,Ruchira
+VI,Science,Vigyan
+VI,Science,Science
+VI,Science,science-VI(Urdu)
+VI,Urdu,Apni Zuban-VI
+VI,Urdu,Urdu Guldasta
+VI,Urdu,Jaan Pahechan
+VII,Mathematics,Ganit
+VII,Mathematics,Mathmatics
+VII,Mathematics,Hisab(Urdu)
+VII,Science,Science
+VII,Science,Vigyan
+VII,Science,Science(Urdu)
+VII,English,Honeycomb
+VII,English,An alien Hand Supplementry Reader
+VII,Sanskrit,Ruchira
+VII,Social Science,Social and Political Life
+VII,Social Science,Samajik aur Rajniti Jeevan
+VII,Social Science,Samajik Aur Siyasi Zindagi
+VII,Social Science,Our Pasts-II
+VII,Social Science,Hamare Ateet-II
+VII,Social Science,Our Environment
+VII,Social Science,Hamara Paryavaran
+VII,Social Science,Hamare Maazi(Urdu)
+VII,Social Science,Hamare Mahol(Urdu))
+VII,Hindi,Vasant
+VII,Hindi,Durva
+VII,Hindi,Mahabharat
+VII,Urdu,Apni Zaban
+VII,Urdu,Urdu Guldasta-Suppl
+VII,Urdu,Door - Pass
+VIII,English,Honeydew
+VIII,English,It So Happend
+VIII,Mathematics,Mathematics
+VIII,Mathematics,Ganit
+VIII,Mathematics,Riyazi(Urdu)
+VIII,Hindi,Vasant
+VIII,Hindi,Durva
+VIII,Hindi,Bharat Ki Khoj
+VIII,Hindi,Sanshipt Budhcharit
+VIII,Science,Science
+VIII,Science,Vigyan
+VIII,Science,Science(Urdu)
+VIII,Social Science,Resource And Development(Geography)
+VIII,Social Science,Sansadhan Avam Vikas(Bhugol)
+VIII,Social Science,Social And Political Life
+VIII,Social Science,Samajik Avam Rajnatik Jeevan
+VIII,Social Science,Our-Pasts-III
+VIII,Social Science,Hamare Atit-III (Itihas)
+VIII,Social Science,Geography(Urdu)
+VIII,Social Science,Samaji Aur Siyasi Zindagi(Urdu)
+VIII,Social Science,Hamare Maazi (Urdu)
+VIII,Sanskrit,Ruchira
+VIII,Urdu,Apni Zaban
+VIII,Urdu,Urdu Guldasta (Supl)
+VIII,Urdu,Door-Pass
+VIII,Urdu,Jaan Pahechan
+IX,English,Beehive English Text Book
+IX,English,Moments Supplimentary Reader
+IX,English,Words and Expressions  1
+IX,Hindi,Kshitij Hindi Text Book
+IX,Hindi,Sprash
+IX,Hindi,Kritika
+IX,Hindi,Sanchayan
+IX,Sanskrit,Shemushi Prathmo Bhag
+IX,Sanskrit,Vyakaranavithi
+IX,Sanskrit,Abhyaswaan Bhav
+IX,Mathematics,Mathematics
+IX,Mathematics,Ganit
+IX,Mathematics,Reyazi (Urdu)
+IX,Science,Science
+IX,Science,Vigyan
+IX,Science,Science (Urdu)
+IX,Social Science,Democratic Politics
+IX,Social Science,Loktantrik Rajniti
+IX,Social Science,Contemporary India
+IX,Social Science,Samkalin Bharat
+IX,Social Science,Arthashastra
+IX,Social Science,Economics
+IX,Social Science,India and the Contempoarary World-I
+IX,Social Science,Bharat Aur Samkalin Vishwa-I
+IX,Social Science,Geographia(Urdu)
+IX,Social Science,Jamhuri Syasat(Urdu)
+IX,Social Science,Hindustan Aur Asri Dunia-I(Urdu)
+IX,Social Science,Aasri Hindustan
+IX,Social Science,Mashiyat
+IX,Urdu,Gulzare-e-urdu
+IX,Urdu,Nawa-e-urdu
+IX,Urdu,Jaan Pahechan
+IX,Urdu,Door Pass
+IX,Urdu,Sab Rang
+IX,Urdu,Asnaf-e-Urdu Adab
+IX,Health and Physical Education,Health and Physical Education
+IX,ICT,Information and Communication Technology
+X,Mathematics,Mathematics
+X,Mathematics,Ganit
+X,Mathematics,Riyazi
+X,Science,Science
+X,Science,Vigyan
+X,Science,Science(Urdu)
+X,Hindi,Kshitij-2
+X,Hindi,Sparsh
+X,Hindi,Sanchayan Bhag-2
+X,Hindi,Kritika
+X,Social Science,Contemporary India
+X,Social Science,Samkalin Bharat
+X,Social Science,Aasri Hindustan-II
+X,Social Science,Understanding Economic Development
+X,Social Science,Arthik Vikas ki Samajh
+X,Social Science,Maashi Taraqqui Ki Samajh
+X,Social Science,India and the Contemporary World-II
+X,Social Science,Bharat Aur Samakalin Vishav-2
+X,Social Science,Hindustan Aur Asri Duniya
+X,Social Science,Democratic Politics
+X,Social Science,Loktantrik Rajniti
+X,Social Science,Jamhuri Siyasat-II
+X,English,First Flight
+X,English,Foot Prints Without feet Supp. Reader
+X,English,Words and Expressions  2
+X,Sanskrit,Shemushi
+X,Sanskrit,Vyakaranavithi
+X,Sanskrit,Abhyaswaan Bhav-II
+X,Urdu,Gulzar-e-Urdu
+X,Urdu,Nawa-e-Urdu
+X,Urdu,Urdu Qwaid aur Insha
+X,Urdu,Jaan Pahechan
+X,Urdu,Door-Paas
+X,Urdu,Sab Rang
+XI,Sanskrit,Bhaswati
+XI,Sanskrit,Shashwati
+XI,Accountancy,Financial Accounting-I
+XI,Accountancy,Lekhashastra-I
+XI,Accountancy,Accountancy-II
+XI,Accountancy,Lekhashastra-II
+XI,Accountancy,Khatadari-I(Urdu)
+XI,Accountancy,Khatadari-II(Urdu)
+XI,Chemistry,Chemistry Part-I
+XI,Chemistry,Rasayan Vigyan bhag-I
+XI,Chemistry,Keemiya I
+XI,Chemistry,Chemistry Part II
+XI,Chemistry,Rasayan Vigyan bhag-II
+XI,Chemistry,Keemiya II
+XI,Mathematics,Mathematics
+XI,Mathematics,Ganit
+XI,Mathematics,Riyazi I
+XI,Statistics,Statistics for Economics
+XI,Statistics,Sankhyiki
+XI,Biology,Biology
+XI,Biology,Jeev Vigyan
+XI,Biology,Hayatiyaat
+XI,Psychology,Introduction to Psychology
+XI,Psychology,Manovigyan
+XI,Psychology,Nafsiyaat
+XI,Geography,Fundamental of Physical Geography
+XI,Geography,Bhautique Bhugol ke Mool Sidhant
+XI,Geography,Tabai Gugraphiya ke Mubadiyat
+XI,Geography,Hindustan Tabiee Mahol (Urdu)
+XI,Geography,Geographia mein amli kaam (Urdu)
+XI,Geography,Pratical Work in Geography
+XI,Geography,Bhugol Main Prayogatmak Karya
+XI,Geography,India Physical Environment
+XI,Geography,Bhart Bhautik Paryabaran
+XI,Geography,Jughrafia Mein Aamli Kam
+XI,Geography,Geographia Ke Mubadiyat
+XI,Physics,Physics Part-I
+XI,Physics,Bhautiki-I
+XI,Physics,Tabiyaat-I
+XI,Physics,Physics Part-II
+XI,Physics,Bhautiki-II
+XI,Physics,Tabiyaat-II
+XI,Hindi,Antra
+XI,Hindi,Aroh
+XI,Hindi,Vitan
+XI,Hindi,Antral
+XI,Sociology,Introducing Sociology
+XI,Sociology,Samajshastra-I
+XI,Sociology,Samajiyaat Ka Tarf
+XI,Sociology,Understanding Society
+XI,Sociology,Samaj ka Bodh
+XI,Sociology,Mutala-e-Muashira
+XI,English,Woven Words
+XI,English,Hornbill
+XI,English,Snapshots Suppl.Reader English
+XI,Political Science,Political Theory
+XI,Political Science,Raajneeti Sidhant
+XI,Political Science,Hindustani Aain aur Kaam
+XI,Political Science,Indian Economic Development(Urdu)
+XI,Political Science,India Constitution at Work
+XI,Political Science,Bharat ka Samvidhan Sidhant aur Vyavhar
+XI,Political Science,Siyasi Nazaria
+XI,History,Themes in World History
+XI,History,Vishwa Itihas Ke Kuch Vishay
+XI,History,Tareekh-e-Alam per Mabni Mauzuaat Part I
+XI,Economics,Indian Economic Development
+XI,Economics,Bhartiya Airthryavstha Ka Vikas
+XI,Economics,Hindustan Ki Moaashi Tarraqqi(Urdu)
+XI,Economics,Shumariyaat Bar-e-Mushiyat(Urdu)
+XI,Business Studies,Business Studies
+XI,Business Studies,Vyavsay Adhyanan
+XI,Business Studies,Karobari Uloom I
+XI,Urdu,Nai Awaz
+XI,Urdu,Dhanak
+XI,Urdu,Gulistan e Adab
+XI,Urdu,Khyabane Urdu
+XI,Heritage Crafts,Living Craft Traditions of India
+XI,Heritage Crafts,Hindustan me Dastkari Ki Riwayat
+XI,Heritage Crafts,Dastkari
+XI,Graphics design,The story of graphic design
+XI,Graphics design,graphic design ek kahani
+XI,Computers and Communication Technology,CCT Part-I
+XI,Computers and Communication Technology,CCT Part-II
+XI,Computers and Communication Technology,Computer aur Sanchar Prodhogiki Part-I
+XI,Computers and Communication Technology,Computer aur Sanchar Prodhogiki Part-II
+XI,Computers and Communication Technology,Computer Aur Muwaslati Technology I
+XI,Computers and Communication Technology,Computer Aur Muwaslati Technology II
+XI,Home Science,Human Ecology and Family Sciences Part I
+XI,Home Science,Human Ecology and Family Sciences Part II
+XI,Home Science,Manav Paristhitiki evm pariwar vigyan Bhag-I
+XI,Home Science,Manav Paristhitiki evm pariwar vigyan Bhag-II
+XI,Creative Writing and Translation,Srijan
+XI,Creative Writing and Translation,Takhleequi Jauhar
+XI,Fine Art,An Introduction to Indian Art Part-I
+XI,Fine Art,Bhartiya Kala ka parichay
+XI,Informatics Practices,Informatics Practices
+XI,Computer Science,Computer Science
+XII,Mathematics,Mathematics Part-I
+XII,Mathematics,Mathematics Part-II
+XII,Mathematics,Ganit-I
+XII,Mathematics,Ganit-II
+XII,Mathematics,Riyazi-I
+XII,Mathematics,Riyazi-II
+XII,Physics,Physics Part-I
+XII,Physics,Physics Part-II
+XII,Physics,Bhautiki-I
+XII,Physics,Bhautiki-II
+XII,Physics,Tabiyaat-I
+XII,Physics,Tabiyaat-II
+XII,Accountancy,Accountancy-I
+XII,Accountancy,Accountancy Part-II
+XII,Accountancy,Lekhashastra Part-I
+XII,Accountancy,Lekhashastra Part-II
+XII,Accountancy,Computerised Accounting System
+XII,Accountancy,Khatadari-I(Urdu)
+XII,Accountancy,Khatadari-II(Urdu)
+XII,Sanskrit,Bhaswati
+XII,Sanskrit,Shaswati
+XII,Hindi,Antra
+XII,Hindi,Aroh
+XII,Hindi,Vitan
+XII,Hindi,Antral Bhag 2
+XII,English,Kaliedoscope
+XII,English,Flamingo
+XII,English,Vistas
+XII,Biology,Biology
+XII,Biology,Jeev Vigyan
+XII,Biology,Human Ecology and Family Sciences Part I
+XII,Biology,Hayatiyaat
+XII,History,Themes in Indian History-I
+XII,History,Bharatiya Itihas ke kuchh Vishay-I
+XII,History,Themes in Indian History-II
+XII,History,Bharatiya Itihas ke kuchh Vishay-II
+XII,History,Themes in Indian History-III
+XII,History,Bharatiya Itihas ke kuchh Vishay-III
+XII,History,Tareekh-e-Hind ke Mauzuaat-I(Urdu)
+XII,History,Tareekh-e-Hind ke Mauzuaat-II(Urdu)
+XII,History,Tareekh-e-Hind ke Mauzuaat-III(Urdu)
+XII,Fine Art,An Introduction to Indian Art Part-II
+XII,Psychology,Psychology
+XII,Psychology,Manovigyan
+XII,Psychology,Nafsiat(Urdu)
+XII,Sociology,Indian Society
+XII,Sociology,Bhartiya Samaj
+XII,Sociology,Social Change and Development in India
+XII,Sociology,Bharat main Samajik Parivartan aur Vikas
+XII,Sociology,Hindustani Samaj(Urdu)
+XII,Sociology,Hindustan Mein Samaji Tabdili Aur Taraqqi(Urdu)
+XII,Chemistry,Chemistry-I
+XII,Chemistry,Chemistry-II
+XII,Chemistry,Rasayan vigyan bhag I
+XII,Chemistry,Rasayan vigyan bhag II
+XII,Chemistry,Keemiya-I
+XII,Chemistry,Keemiya-II
+XII,Political Science,Contemporary World Politics
+XII,Political Science,Samkalin Vishwa Rajniti
+XII,Political Science,Political Science-II
+XII,Political Science,Swatantra Bharat Mein Rajniti-II
+XII,Political Science,Aasri Alami Siyasat(Urdu)
+XII,Political Science,Azadi Ke Baad Hindustan Ki Siyasat(Urdu)
+XII,Economics,Introductory Microeconomics
+XII,Economics,Introductory Macroeconomics
+XII,Economics,Vyashthi Arthshasrta
+XII,Economics,Samashty Arthshastra Ek Parichay
+XII,Economics,Juzvi Maashiyat ka Taruf(Urdu)
+XII,Economics,Kulli Maashiyat Ka Taruf(Urdu)
+XII,Business Studies,Bussiness Studies-I
+XII,Business Studies,Vyavasai Adhyan-I
+XII,Business Studies,Bussiness Studies-II
+XII,Business Studies,Vyavasai Adhyan-II
+XII,Business Studies,Karobari Uloom I(Urdu)
+XII,Business Studies,Karobari Uloom II(Urdu)
+XII,Heritage Crafts,Hindustan me Dastkari Ki Riwayat
+XII,Heritage Crafts,Craft Tradition of India
+XII,Heritage Crafts,Bharatiya Hastkla Ki Paramparayen
+XII,New Age Graphics Design,New Age Graphics Design
+XII,Home Science,Human Ecology and Family Sciences Part I
+XII,Home Science,Human Ecology and Family Sciences Part II
+XII,Home Science,Manav Paristhitik avam Parivar Vigyan Bhag 1
+XII,Home Science,Manav Paristhitiki avam Parivar Vigyan Bhag 2
+XII,Urdu,Gulistan-e- Adab
+XII,Urdu,Khayaban-e-Urdu
+XII,Urdu,Nai Awaz
+XII,Urdu,Dhanak
+XII,Geography,Fundamentals of Human Geography
+XII,Geography,Practical Work in Geography Part II
+XII,Geography,Manav Bhugol Ke Mool Sidhant
+XII,Geography,Bhugol main peryojnatmak pryogatmak karye
+XII,Geography,India -People And Economy
+XII,Geography,Bharat log aur arthvyasastha(Bhugol)
+XII,Geography,Insani Jughrafia Ke Buniyadi Usool(Urdu)
+XII,Geography,Hindustan Awam Aur Maishat(Urdu)
+XII,Geography,Jughrafia Mein Aamli Kam(Urdu)
+XI & XII Combined,Hindi,Abhivyakti Aur Madhyam
+XI & XII Combined,Sanskrit,Sanskrit Sahitya parichay
+XI & XII Combined,Heritage Crafts,Exploring Craft Tradition of India
+XI & XII Combined,Heritage Crafts,Bhartiya Hastkala Parmparaon ki Khoj

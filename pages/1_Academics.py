@@ -71,10 +71,17 @@ if user_grade:
 
             # output = response_api(f"Restrict responses only to NCERT textbooks and materials. Refer Grade {user_grade} subject {user_subject} and give answer to {user_text}")
 
-            prompt = f"""Restrict responses only to NCERT textbooks and materials. Refer class {
-                user_grade} subject {user_subject} and give answer to {user_text}"""
+            prompt = f"""
+            Don't give any responses which are unsafe for kids below 16 years.
+            Try to limit responses to NCERT or byjus.com textbooks and materials.
+            Give answer to '{user_text}', by following below criteria
+            Class: {user_grade}
+            Subject: {user_subject}
+            Textbook: Latest published. Also provide your source at the end.
+            """
 
             with st.spinner():
+                prompt
                 response = model.generate_content(prompt)
                 output = response.text
 
