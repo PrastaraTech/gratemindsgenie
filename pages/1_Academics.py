@@ -81,7 +81,6 @@ if user_grade:
             """
 
             with st.spinner():
-                prompt
                 response = model.generate_content(prompt)
                 output = response.text
 

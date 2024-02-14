@@ -88,8 +88,8 @@ if user_grade:
             st.session_state.generate.append(output)
             st.session_state.past.append(str(user_text))
 
-        if 'generate' in st.session_state:
-            for i in range(len(st.session_state['generate']) - 1, -1, -1):
-                message(st.session_state['past'][i],
-                        is_user=True, key=str(i) + '_user')
-                message(st.session_state['generate'][i], key=str(i))
+if 'generate' in st.session_state:
+    for i in range(len(st.session_state['generate']) - 1, -1, -1):
+        message(st.session_state['past'][i],
+                is_user=True, key=str(i) + '_user')
+        message(st.session_state['generate'][i], key=str(i))

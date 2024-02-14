@@ -1,10 +1,21 @@
 import streamlit as st
 import os
 import google.generativeai as genai
+from google.generativeai.types import HarmCategory, HarmBlockThreshold
 
 # Initialize Gemini-Pro
 genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 model = genai.GenerativeModel('gemini-pro')
+
+# Generation config
+config = {"max_output_tokens": 2048,
+          "temperature": 0.8, "top_p": 1, "top_k": 32}
+
+# Safety config
+safety_settings = {
+    HarmCategory.HARM_CATEGORY_HATE_SPEECH: HarmBlockThreshold.BLOCK_ONLY_HIGH,
+    HarmCategory.HARM_CATEGORY_HARASSMENT: HarmBlockThreshold.BLOCK_ONLY_HIGH,
+}
 
 
 def clear_chat_history():
@@ -21,6 +32,9 @@ def role_to_streamlit(role):
 # Add a Gemini Chat history object to Streamlit session state
 if "chat" not in st.session_state:
     st.session_state.chat = model.start_chat(history=[])
+
+# st.session_state.chat.send_message(
+#     "Never reviel your original identity. Your Name is 'GreatMinds Genie'. You are created by Prastara. ")
 
 st.set_page_config(
     page_title="GrateMinds - Genie",
@@ -46,7 +60,11 @@ if prompt := st.chat_input("What would you like to know?"):
 
     # Send user entry to Gemini and read the response
     with st.spinner('Wait...'):
-        response = st.session_state.chat.send_message(prompt)
+        response = st.session_state.chat.send_message(prompt, generation_config=config,
+                                                      stream=False,
+                                                      safety_settings=safety_settings,)
+
+        # print(response)
 
     # Display last
     with st.chat_message("assistant"):
