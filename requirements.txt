@@ -3,4 +3,9 @@ bardapi
 google.generativeai
 streamlit_chat
 extra_streamlit_components
-python-dotenv
+# python-dotenv
+# langchain
+# PyPDF2
+# chromadb
+# faiss-cpu
+# langchain_google_genai

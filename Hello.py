@@ -26,6 +26,6 @@ with tab2:
     st.page_link("pages/2_QnA-Generator.py", icon="❓")
     st.write(" Click :point_up: to generated question and answers related to any book or topic in NCERT academic textbooks.""")
 with tab3:
-    st.page_link("pages/3_General.py", icon="♾️")
+    st.page_link("pages/3_Chat.py", icon="♾️")
     st.write(
         """ Click :point_up: to start a chat with Ginie on any topic you are interested.""")

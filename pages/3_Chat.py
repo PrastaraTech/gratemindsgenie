@@ -56,17 +56,22 @@ for message in st.session_state.chat.history:
 # Accept user's next message, add to context, resubmit context to Gemini
 if prompt := st.chat_input("What would you like to know?"):
     # Display user's last message
-    st.chat_message("user").markdown(prompt)
+    mdown = st.chat_message("user").markdown(prompt)
 
     # Send user entry to Gemini and read the response
     with st.spinner('Wait...'):
-        response = st.session_state.chat.send_message(prompt, generation_config=config,
-                                                      stream=False,
-                                                      safety_settings=safety_settings,)
+        try:
+            response = st.session_state.chat.send_message(prompt, generation_config=config,
+                                                          stream=False,
+                                                          safety_settings=safety_settings,)
+            if response._error:
+                st.error("""An error occurred while processing your request. The issue is on our end. Please try executing the request again.If the error persists, please contact us by clicking on the top menu.""")
 
-        # print(response)
-
-    # Display last
-    with st.chat_message("assistant"):
-        st.markdown(response.text)
-        st.button(':rainbow[Clear History]', on_click=clear_chat_history)
+            else:
+                # Display last
+                with st.chat_message("assistant"):
+                    st.markdown(response.text)
+                    st.button(':rainbow[Clear History]',
+                              on_click=clear_chat_history)
+        except:
+            st.error("""An error occurred while processing your request. The issue is on our end. Please try executing the request again.If the error persists, please contact us by clicking on the top menu.""")
