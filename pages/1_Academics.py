@@ -51,6 +51,15 @@ def response_api(prompt):
     return message
 
 
+if "my_text" not in st.session_state:
+    st.session_state.my_text = ""
+
+
+def submit():
+    st.session_state.my_text = st.session_state.widget
+    st.session_state.widget = ""
+
+
 user_grade = st.selectbox("Select your grade:",
                           subject_options.keys(), index=None)
 
@@ -61,8 +70,11 @@ if user_grade:
                                 subject_options_for_grade, index=None)
 
     if user_subject:
-        user_text = st.text_input(
-            "Ask specific questions on subject you selected",)
+        st.text_input(
+            "Ask specific questions on subject you selected", key="widget", on_change=submit)
+
+        user_text = st.session_state.my_text
+
         if user_text:
             if 'generate' not in st.session_state:
                 st.session_state['generate'] = []
@@ -86,6 +98,8 @@ if user_grade:
 
             st.session_state.generate.append(output)
             st.session_state.past.append(str(user_text))
+            user_text = ""
+            st.session_state.my_text = ""
 
             if st.session_state['generate']:
                 for i in range(len(st.session_state['generate']) - 1, -1, -1):
