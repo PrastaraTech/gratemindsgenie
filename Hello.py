@@ -30,6 +30,6 @@ with tab3:
     st.write(
         """ Click :point_up: to start a chat with Ginie on any topic you are interested.""")
 with tab4:
-    st.page_link("pages/4_Pre-School.py", icon="♾️")
+    st.page_link("pages/4_Pre-School.py", icon="🌈")
     st.write(
         """ Click :point_up: to start a chat with Ginie on any topic you are interested.""")

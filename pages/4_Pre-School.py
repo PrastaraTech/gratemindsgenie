@@ -48,7 +48,7 @@ st.set_page_config(
     }
 )
 st.page_link("Hello.py", label="Home", icon="🏠")
-st.markdown("# QnA Generator from Academic Textbooks :question:")
+st.markdown("# :rainbow: Creative KIDS")
 
 
 @st.cache_data
@@ -71,10 +71,10 @@ def submit():
 prompt_ext = ""
 
 test_type = st.radio("What can I help you with today?", [
-    "Poems", "Short story", "Dictation", "Word with missing letters", "True/False"], horizontal=True, index=0,)
+    "Poems", "Short story", "Dictation", "Fill in the blank", "True/False"], horizontal=True, index=0,)
 st.write("You selected:", test_type)
 
-age = st.slider("Age Gropup (2-8 years old)):",
+age = st.slider("Age Gropup (2-8 years old):",
                 min_value=2, max_value=8, step=2)
 
 answers = st.toggle("Required answers?")
@@ -90,8 +90,8 @@ if user_text:
     if test_type == "True/False":
         prompt_ext = f"""Generate 10 True/False questions on the topic of {
             user_text} """
-    elif test_type == "Word with missing letters":
-        prompt_ext = f"""Generate 10 words with missing letters on the topic of {
+    elif test_type == "Fill in the blank":
+        prompt_ext = f"""Generate 10 questions in the form of "Fill in the blank" on the topic of  {
             user_text} """
     elif test_type == "Poems":
         prompt_ext = f"""Generate a poem on the topic of {user_text} """
