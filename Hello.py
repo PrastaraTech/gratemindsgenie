@@ -7,11 +7,11 @@ import re
 
 st.set_page_config(
     page_title="GrateMinds - Genie",
-    page_icon="👋",
+    page_icon=":sparkles:",
     layout="centered",
     menu_items={
         'Get Help': 'https://prastaratech.com',
-        'Report a bug': 'mailto:support@prastaratech.com',
+        'Report a bug': 'mailto:help@prastaratech.com',
         'About': "# Genie. This is an *extremely* cool app!"
     }
 )
@@ -32,4 +32,4 @@ with tab3:
 with tab4:
     st.page_link("pages/4_Pre-School.py", icon="🌈")
     st.write(
-        """ Click :point_up: to start a chat with Ginie on any topic you are interested.""")
+        """ Click :point_up: to start a chat with Ginie on topics related to pre-school education.""")

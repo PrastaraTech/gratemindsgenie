@@ -40,7 +40,7 @@ chat = model.start_chat(history=[])
 
 st.set_page_config(
     page_title="GrateMinds - Genie",
-    page_icon="👋",
+    page_icon=":sparkles:",
     menu_items={
         'Get Help': 'https://prastaratech.com',
         'Report a bug': 'mailto:support@prastaratech.com',
@@ -122,7 +122,7 @@ if user_text:
 
         if response.prompt_feedback:
             st.write(
-                "Given topic is not appropiate for your age group. Please try another topic.")
+                "Given topic is not appropiate for the selected age group. Please try another topic.")
         else:
             if len(response.candidates[0].content.parts) > 0:
                 output = response.candidates[0].content.parts[0].text
